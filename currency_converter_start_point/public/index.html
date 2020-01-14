@@ -11,24 +11,36 @@
 </head>
 <body>
 
-  <h1>Currency Converter App</h1>
+  <h1>Euro Currency Converter App</h1>
 
   <div id="app">
 
+    <h2>Converting from euros to another currency</h2>
 
-    <form>
-      <label for="new-amount">Amount (euros) :</label>
-      <input id="new-amount" type="number" v-model="newAmount" />
+    <label for="selected-amount">Amount (euros):</label>
+    <input id="selected-amount" type="number" v-model="selectedAmount" />
 
-      <select id="currency_select" v-model="selectedCurrency">
-        <option disabled value="">Select a currency</option>
-        <option v-for"rate in rates" :value="rate">{{rates}}</option>
-      </select>
-      <input type="submit" value="Submit" />
-    </form>
+    <select id="currency_select" v-model="selectedCurrencyConvertingInto">
+      <option disabled value="">Convert into</option>
+      <option v-for"(index, currency, exchangeRate) in rates" :value="rate">{{rates.currency}}</option>
+    </select>
 
 
+    <div id="selected_currency" v-if="selectedCurrencyConvertingInto">
+      <h3>{{selectedCurrencyConvertingInto.rate*{{currency_select}}}</h2>
 
-  </div>
+        <h2>Converting from a currency to euros</h2>
+        <label for="selected-amount2">Amount (to convert into euros):</label>
+        <input id="selected-amount2" type="number" v-model="selectedAmount2" />
+
+        <select id="currentCurrency" v-model="currentCurrency">
+          <option disabled value="">Current currency</option>
+          <option v-for"(index, currency, exchangeRate) rates" :value="rate">{{rates.currency}}</option>
+        </select>
+
+
+        <div id="current_currency" v-if="currentCurrency">
+          <h3>{{currentCurrency.rate/{{current_currency}}}</h2>
+</div>
 </body>
 </html>
